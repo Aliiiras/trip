@@ -1,101 +1,89 @@
-import Image from "next/image";
+// import ImageWrapper from "next/ImageWrapper";
+import { serverFetch } from "@/app/core/services/http";
+import Header from "./components/layout/Header";
+import ModalContainer from "./components/common/modal/ModalContainer";
+import TourDetails from "./tours/TourCard";
+import SearchTour from "./tours/SearchTour";
+import Footer from "./components/layout/Footer";
+import ImageWrapper from "./components/features/Image/ImageWrapper";
 
-export default function Home() {
+export default async function Home({ searchParams }) {
+  ///fetching tour list (by card)
+  const data = await serverFetch("tour", searchParams, { cache: "no-store" });
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div>
+      <div>
+      <Header/>
+      <ImageWrapper src="header-img.png" className="w-full"/>
+      </div>
+      <ModalContainer />
+      <SearchTour />
+      <TourDetails toursData={data}/>
+      <div className="sxs: mx-auto w-[327px] h-[200px] border rounded-lg">
+        <div className="sxs:w-[327px] h-[127px] bg-green-600 mx-auto rounded-lg">
+          <div className="sxs:pt-[20px] pr-[15px]">
+            <h1 className="text-white font-extrabold text-xl leading-[34px]">خرید تلفنی از <span className="text-green-900 font-extrabold">تورینو</span></h1>
+            <h4 className="text-white">به هرکجا که میخواهید!</h4>
+          </div>
+          <div >
+            <ImageWrapper className="sxs:w-[195px] h-[158px] relative right-[135px] bottom-[109px]" src="cartoon-man.png" width={225} height={308} alt="man"/>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className="flex flex-row justify-around my-[10px] mx-[10px]">
+          <div className="flex relative right-[10px] top-[5px] items-center">
+            <h2><span className="numbers">021-1840
+            </span></h2>
+            <ImageWrapper className="sxs:w-[20px] h-[20px]" src="call.png" width={25} height={15} alt="call"/>
+          </div>
+            <button className="sxs:w-[136px] h-[38px] bg-green-800 text-white rounded-lg relative left-[10px] top-[5px]">
+            اطلاعات بیشتر
+            </button>
+        </div>
+      </div>
+          <div>
+            <div className="flex items-center mr-[40px] my-[15px]">
+              <h3 className="font-extrabold text-lg leading-[40px]">چرا <span className="text-green-600">تورینو </span>؟</h3>
+              <div className="sxs:hidden">
+              <h4>تور طبیعت گردی و تاریخی </h4>
+              <h5>
+              اگر دوست داشته باشید که یک جاذبه طبیعی را از نزدیک ببینید و در دل طبیعت چادر بزنید یا در یک اقامتگاه بوم گردی اتاق بگیرید، باید تورهای طبیعت‌گردی را خریداری کنید. اما اگر بخواهید از جاذبه‌های گردشگری و آثار تاریخی یک مقصد خاص بازدید کنید، می‌توانید تورهای فرهنگی و تاریخی را خریداری کنید.
+              </h5>
+              </div>
+            </div>
+            <div>
+              {/* <Slider />   */}
+            </div>
+          </div>
+          <hr></hr>
+        <div className="xsx: my-8 grid grid-col-2 mx-auto justify-center">
+          <div className="flex flex-row gap-[20px] my-[20px] items-center">
+            <div>
+              <ImageWrapper  alt="16" src="Group 16.png" width={50} height={50} alt="o"/>
+            </div>
+            <div>
+              <h3>بصرفه ترین قیمت</h3>
+              <h5>بصرفه ترین و ارزان ترین قیمت تور را از ما بخواهید.</h5></div>
+            </div>
+          <div className="flex flex-row gap-[20px] my-[20px] items-center">
+            <div>
+              <ImageWrapper  alt="17" src="Group 17.png" width={50} height={50} alt="i"/>
+            </div>
+            <div>
+              <h3>پشتیبانی</h3>
+              <h5>پشتیبانی و همراهی<span className="numbers">24</span>  ساعته در تمامی مراحل سفر شما.</h5>
+            </div>
+          </div>
+          <div className="flex flex-row gap-[20px] my-[20px] items-center">
+            <div>
+              <ImageWrapper  alt="18" src="Group 18.png" width={50} height={50} alt="u"/>
+            </div>
+            <div>
+              <h3>رضایت کاربران</h3>
+              <h5>رضایت بیش از <span className="numbers">10</span> هزار کاربر از تور های ما. </h5>
+            </div>
+          </div>
+        </div>
+      <Footer/>
     </div>
   );
 }
