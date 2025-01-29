@@ -29,7 +29,7 @@ async function TourDetailsPage({ params }) {
               alt={tourData.title || "placeimg"}
           />
         </div>
-        <div className="sxs:bg-red-100 w-[330px] grid grid-flow-col place-items-center justify-between my-[15px] mx-auto">
+        <div className="sxs:w-[330px] grid grid-flow-col place-items-center justify-between my-[15px] mx-auto">
           <div>
           <h1 className="sxs:font-bold text-[24px] leading-[38px]">{tourData.title}</h1>
           </div>
@@ -37,7 +37,7 @@ async function TourDetailsPage({ params }) {
           <h1 className="numbers sxs:font-normal text-[15px] leading-[24px] text-gray-500">{differenceDays}شب {differenceDays-1}روز</h1>
           </div>
         </div>
-        <div className="sxs:grid grid-cols-3 bg-blue-100">
+        <div className="sxs:grid grid-cols-3">
           <div className="flex flex-row items-center py-[20px]">
             <ImageWrapper className="w-[14px]font-normal text-[13px] leading-[20px]" width={20} height={20} alt="image" src="user-tick.svg"/>{tourData.options[0]}
           </div>
