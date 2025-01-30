@@ -34,7 +34,7 @@ function SendOTPForm({ mobile, setMobile, setStep ,setIsOpen}) {
   };
 
   return (
-    <div className="flex flex-col w-[358px] h-[362px] bg-white rounded-[20px] shadow-[0_4px_4px_-0px_rgba(0,0,0,0.25)] p-6">
+    <div className="flex flex-col w-[358px] h-[362px] bg-white rounded-[20px] shadow-[0_4px_4px_-0px_rgba(0,0,0,0.25)] p-6 xs:w-[320px]">
       <button className="text-red-500 self-end"
         onClick={() => setIsOpen(false)}>X</button>
       <h4 className="text-xl font-bold text-center">ورود به تورینو</h4>

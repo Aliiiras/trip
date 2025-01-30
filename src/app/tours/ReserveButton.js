@@ -5,17 +5,20 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 function ReserveButton({ id }) {
+  console.log("rec" , id);
   const { mutate, isPending } = useAddToBasket();
+  // console.log(id);
   const router = useRouter();
 
   const cartHandler = () => {
-    if (!id) {
+    // console.log(id);
+    // if (!id) {
       // نمایش پیام یا هدایت به صفحه لاگین
-      toast.error("لطفاً ابتدا وارد حساب کاربری خود شوید.");
-      console.log("login!!!!!!");
-      // router.push("/login"); // هدایت به صفحه لاگین
-      return;
-    }
+      // toast.error("لطفاً ابتدا وارد حساب کاربری خود شوید.");
+      // console.log("login!!!!!!");
+      // router.push("/"); // هدایت به صفحه لاگین
+      // return;
+    // }
     if (isPending) return;
 
     mutate(id, {

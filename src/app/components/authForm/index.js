@@ -50,7 +50,7 @@ function AuthForm() {
     </Link>
     {isMenuOpen && data?.data?.id && (
       <div 
-      className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-50 w-60">
+      className="absolute right-[-10px] mt-2 w-48 bg-white rounded-md shadow-lg z-50">
         <div 
         className="flex items-center space-x-2 rtl:space-x-reverse bg-gray-100 rounded h-10">
         <div 
@@ -77,8 +77,8 @@ function AuthForm() {
 
   return (
     <div>
-      <button className="sxs:hidden md:visible lg:visible" onClick={() => setIsOpen(true)}>ورود|ثبت نام</button>
-      <button className="sxs:ml-8 p-[4px] border border-red-500 rounded-lg md:hidden lg:hidden" onClick={() => setIsOpen(true)}><ImageWrapper src="logout.svg"/></button>
+      <button className="sxs:hidden xs:hidden md:visible lg:visible" onClick={() => setIsOpen(true)}>ورود|ثبت نام</button>
+      <button className="sxs:ml-8 p-[4px] border border-red-500 rounded-lg xs:flex ml-[15px] items-center md:hidden lg:hidden" onClick={() => setIsOpen(true)}><ImageWrapper src="logout.svg"/></button>
       {step === 1 && (
         <ModalContainer setIsOpen={setIsOpen} isOpen={isOpen}>
           <SendOTPForm

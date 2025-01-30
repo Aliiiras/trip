@@ -12,8 +12,8 @@ export default function ProfileLayout({ children }) {
     
     <AuthProvider>
       <Header/>
-      <div className="p-10 grid grid-cols-3 gap-6 bg-gray-100">
-        <ul className="sxs:hidden border border-slate-200 divide-y rounded-md col-span-1">
+      <div className="grid grid-cols-3 gap-6 bg-gray-100 xs:flex flex-col">
+        <ul className="xs:hidden sxs:hidden border border-slate-200 divide-y rounded-md col-span-1">
           <li className="p-2 flex flex-row gap-2 mr-2">
             <img src="/ico/profile-g.svg"></img>
             پروفایل من

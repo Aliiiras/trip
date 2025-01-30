@@ -1,11 +1,11 @@
 "use client";
 
-import Footer from "@/components/partials/Footer";
-import Header from "@/components/partials/Header";
-import AuthProvider from "@/components/partials/provider/AuthProvider";
-import useQuery from "@/core/hooks/query";
+import Footer from "../components/layout/Footer";
+import Header from "../components/layout/Header";
+import AuthProvider from "../core/providers/AuthProvider";
+import useQuery from "../core/hooks/query";
 import Link from "next/link";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 function PaymentPage() {
   const { getQuery } = useQuery();

@@ -37,7 +37,7 @@ function SearchFrom() {
 
   return (
     <form
-      className="bg-green-100 flex gap-5 p-5 w-fit m-auto"
+      className="bg-green-100 flex gap-5 p-5 w-fit m-auto xs:w-[320px] px-[5px] bg-red-100"
       onSubmit={handleSubmit(submitHandler)}
     >
       <select {...register("originId")}>

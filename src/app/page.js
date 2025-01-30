@@ -19,14 +19,14 @@ export default async function Home({ searchParams }) {
       <ModalContainer />
       <SearchTour />
       <TourDetails toursData={data}/>
-      <div className="sxs: mx-auto w-[327px] h-[200px] border rounded-lg">
+      <div className="sxs: mx-auto w-[327px] h-[200px] border rounded-lg xs:w-[320px] my-[50px]">
         <div className="sxs:w-[327px] h-[127px] bg-green-600 mx-auto rounded-lg">
           <div className="sxs:pt-[20px] pr-[15px]">
             <h1 className="text-white font-extrabold text-xl leading-[34px]">خرید تلفنی از <span className="text-green-900 font-extrabold">تورینو</span></h1>
             <h4 className="text-white">به هرکجا که میخواهید!</h4>
           </div>
           <div >
-            <ImageWrapper className="sxs:w-[195px] h-[158px] relative right-[135px] bottom-[109px]" src="cartoon-man.png" width={225} height={308} alt="man"/>
+            <ImageWrapper className="w-[195px] h-[158px] sxs:relative right-[135px] bottom-[109px] xs:relative right-[120px] bottom-[89px]" src="cartoon-man.png" width={225} height={308} alt="man"/>
           </div>
         </div>
         <div className="flex flex-row justify-around my-[10px] mx-[10px]">
@@ -35,7 +35,7 @@ export default async function Home({ searchParams }) {
             </span></h2>
             <ImageWrapper className="sxs:w-[20px] h-[20px]" src="call.png" width={25} height={15} alt="call"/>
           </div>
-            <button className="sxs:w-[136px] h-[38px] bg-green-800 text-white rounded-lg relative left-[10px] top-[5px]">
+            <button className="w-[136px] h-[38px] bg-green-800 text-white rounded-lg relative sxs: left-[10px] top-[5px]">
             اطلاعات بیشتر
             </button>
         </div>
@@ -43,7 +43,7 @@ export default async function Home({ searchParams }) {
           <div>
             <div className="flex items-center mr-[40px] my-[15px]">
               <h3 className="font-extrabold text-lg leading-[40px]">چرا <span className="text-green-600">تورینو </span>؟</h3>
-              <div className="sxs:hidden">
+              <div className="xs:hidden sxs:hidden">
               <h4>تور طبیعت گردی و تاریخی </h4>
               <h5>
               اگر دوست داشته باشید که یک جاذبه طبیعی را از نزدیک ببینید و در دل طبیعت چادر بزنید یا در یک اقامتگاه بوم گردی اتاق بگیرید، باید تورهای طبیعت‌گردی را خریداری کنید. اما اگر بخواهید از جاذبه‌های گردشگری و آثار تاریخی یک مقصد خاص بازدید کنید، می‌توانید تورهای فرهنگی و تاریخی را خریداری کنید.

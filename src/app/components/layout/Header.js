@@ -5,8 +5,8 @@ function Header() {
   return (
     <div className="border-b-2 border-gray-200">
     <div className="flex items-center justify-between">
-      <h2 className="text-xl font-bold drop-shadow-lg sxs:hidden">Travel</h2>
-        <ul className="sxs:hidden">
+      <h2 className="text-xl font-bold drop-shadow-lg sxs:hidden xs:hidden">Travel</h2>
+        <ul className="sxs:hidden xs:hidden">
           <li>صفحه اصلی</li>
           <li>خدمات گردشگری</li>
           <li>درباره ما</li>
