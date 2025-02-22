@@ -14,10 +14,12 @@ function TourCard({ toursData = [] }) {
   );
   return (
 <div className="">
-      <h2 className="text-[20px] leading-[31px] font-normal mr-[70px] my-[20px]">همه تورها</h2>
-    <div>
+      <div className="max-w-[1200px] mx-auto">
+      <h2 className="text-[20px] leading-[31px] font-normal mr-[30px] my-[20px] md:my-[60px]">همه تورها</h2>
+      </div>
+    <div className="max-w-[1200px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {toursData?.map((tour) => (
-          <div key={tour.id} className="w-[330px] h-[277px] mx-auto mb-[20px] border rounded-xl">
+          <div key={tour.id} className="w-[330px] h-[277px] mx-auto mb-[20px] border rounded-xl md:auto-rows-max">
           {tour.image && (
           <Image
             className="w-[330px] h-[159px] rounded"

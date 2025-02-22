@@ -31,14 +31,14 @@ function SearchTour() {
   
     return (
     <>
-    <h3 className="font-semibold text-lg leading-[25px] text-center py-[20px]">تورینو برگزار کننده بهترین تور های داخلی و خارجی</h3>
+    <h3 className="font-semibold text-lg leading-[25px] text-center py-[20px]"><span className="text-green-600">تورینو</span> برگزار کننده بهترین تور های داخلی و خارجی</h3>
       <form
-        className="w-[350px] mx-auto flex flex-col"
+        className="w-full max-w-[370px] md:max-w-[800px] mx-auto flex flex-col md:flex-row border-2 border-gray-200 rounded-lg py-[8px] min-h-[70px] items-center px-4"
         onSubmit={handleSubmit(submitHandler)}
       >
-        <div className="flex mb-[15px]">
+        <div className="flex mb-[15px] md:my-auto mx-[8px] gap-2">
         <select className="w-[160px] h-[50px] rounded-lg border border-gray-200 mx-auto" {...register("originId")}>
-        <option value="" disabled>مبدا</option>
+        <option disabled defaultValue="">مبدا</option>
           <option value="1">تهران</option>  
           <option value="2">سنندج</option>
           <option value="3">مادرید</option>
@@ -53,26 +53,27 @@ function SearchTour() {
   
         </select>
         <select className="w-[160px] h-[50px] rounded-lg border border-gray-200 mx-auto" {...register("destinationId")}>
-        <option value="" disabled>مقصد</option>
-        <option value="1">تهران</option>  
-          <option value="2">سنندج</option>
-          <option value="3">مادرید</option>
-          <option value="4">اصفهان</option>
-          <option value="5">سلیمانیه</option>
-          <option value="6">هویلر</option>
-          <option value="7">مازندران</option>
-          <option value="8">آفرود</option>
-          <option value="9">رم</option>
-          <option value="10">کیش</option>
+        <option disabled defaultValue="">مقصد</option>
           <option value="11">شیراز</option>
+          <option value="10">کیش</option>
+          <option value="9">رم</option>
+          <option value="8">آفرود</option>
+          <option value="7">مازندران</option>
+          <option value="6">هویلر</option>
+          <option value="5">سلیمانیه</option>
+          <option value="4">اصفهان</option>
+          <option value="3">مادرید</option>
+          <option value="2">سنندج</option>
+        <option value="1">تهران</option>  
         </select>
         </div>
         <Controller
         control={control}
         name="date"
         render={({ field: { onChange } }) => (
-            <DatePicker
-            inputClass="!text-black pr-0"
+            <div>
+              <DatePicker
+            inputClass="!text-black pr-0 md:!h-[50px] !w-[220px] !rounded-lg !border-gray-200 border !ml-2"
             round="x2"
             accentColor="#28A745"
             onChange={(e) =>
@@ -83,9 +84,10 @@ function SearchTour() {
             }
             range
           />
+            </div>
         )}
       />
-        <input className="bg-green-600 my-[20px] mx-auto text-white rounded-lg w-[330px] h-[47px]" type="submit" value="جستجو"/>
+        <input className="bg-green-600 my-[20px] mx-auto text-white rounded-lg w-[330px] h-[50px] md:w-[190px]" type="submit" value="جستجو"/>
       </form>
       </>
     );

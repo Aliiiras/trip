@@ -6,10 +6,13 @@ import CheckOTPForm from "./CheckOTPForm";
 import ModalContainer from "../common/modal/ModalContainer";
 // import { getImagePath } from "@/app/core/utils/helper";
 import { useGetUserData } from "@/app/core/services/queries";
-import { signOut } from "next-auth/react";
 import { useEffect } from "react";
 import Link from "next/link";
 import ImageWrapper from "../features/Image/ImageWrapper";
+
+
+import { signOut } from "next-auth/react";
+
 
 function AuthForm() {
   const [step, setStep] = useState(1);
@@ -17,8 +20,8 @@ function AuthForm() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const { data } = useGetUserData();
 
+  const { data } = useGetUserData();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -26,7 +29,7 @@ function AuthForm() {
         setIsMenuOpen(false);
       }
     };
-  
+
     document.addEventListener("click", handleClickOutside);
     return () => {
       document.removeEventListener("click", handleClickOutside);
@@ -37,48 +40,78 @@ function AuthForm() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleLogout = () => {
-    signOut(); 
-  };
-
-  if (data?.data){ return (
-  <div className="relative mx-[30px]">
-    <Link className="text-green-600 flex numbers" href="#" onClick={handleMenu}>
-    <ImageWrapper className="ml-2" src="profile-g.svg" alt="My Icon" width="24" height="24" />
-    {data?.data?.mobile}
-    <ImageWrapper src="arrow-down.svg" alt="My Icon" width="24" height="24" />
-    </Link>
-    {isMenuOpen && data?.data?.id && (
-      <div 
-      className="absolute right-[-10px] mt-2 w-48 bg-white rounded-md shadow-lg z-50">
-        <div 
-        className="flex items-center space-x-2 rtl:space-x-reverse bg-gray-100 rounded h-10">
-        <div 
-        className="w-7 h-7 bg-gray-300 items-center justify-center flex rounded-full mr-3">
-          <ImageWrapper src="profiletranp.svg" className=""/>
-        </div>
-        <p className="numbers flex items-center space-x-2 rtl:space-x-reverse pr-4">{data?.data?.mobile}</p>
-        </div>
-        <div className="flex items-center space-x-2 rtl:space-x-reverse h-10">
-        <Link href="/profile" className="flex items-center space-x-2 rtl:space-x-reverse pr-4">
-        <ImageWrapper src="profilenull.svg" className="ml-2"/>
-        اطلاعات حساب کاربری</Link>
-        </div>
-        <hr></hr>
-        <div className="flex items-center space-x-2 rtl:space-x-reverse h-10">
-        <ImageWrapper src="logout.svg" className="mr-4"/>
-        <button onClick={handleLogout} className="flex items-center space-x-2 rtl:space-x-reverse text-red-600">
-          خروج از حساب کاربری</button>
-        </div>
+  if (data?.data) {
+    return (
+      <div className="relative mx-[30px]">
+        <Link
+          className="text-green-600 flex numbers"
+          href="#"
+          onClick={handleMenu}
+        >
+          <ImageWrapper
+            className="ml-2"
+            src="profile-g.svg"
+            alt="My Icon"
+            width="24"
+            height="24"
+          />
+          {data?.data?.mobile}
+          <ImageWrapper
+            src="arrow-down.svg"
+            alt="My Icon"
+            width="24"
+            height="24"
+          />
+        </Link>
+        {isMenuOpen && data?.data?.id && (
+          <div className="absolute right-[-10px] mt-2 w-48 bg-white rounded-md shadow-lg z-50">
+            <div className="flex items-center space-x-2 rtl:space-x-reverse bg-gray-100 rounded h-10">
+              <div className="w-7 h-7 bg-gray-300 items-center justify-center flex rounded-full mr-3">
+                <ImageWrapper src="profiletranp.svg" className="" />
+              </div>
+              <p className="numbers flex items-center space-x-2 rtl:space-x-reverse pr-4">
+                {data?.data?.mobile}
+              </p>
+            </div>
+            <div className="flex items-center space-x-2 rtl:space-x-reverse h-10">
+              <Link
+                href="/profile"
+                className="flex items-center space-x-2 rtl:space-x-reverse pr-4"
+              >
+                <ImageWrapper src="profilenull.svg" className="ml-2" />
+                اطلاعات حساب کاربری
+              </Link>
+            </div>
+            <hr></hr>
+            <div className="flex items-center space-x-2 rtl:space-x-reverse h-10">
+              <ImageWrapper src="logout.svg" className="mr-4" />
+              <button
+                onClick={() => signOut({ callbackUrl: "/" })}
+                className="flex items-center space-x-2 rtl:space-x-reverse text-red-600"
+              >
+                خروج از حساب کاربری
+              </button>
+            </div>
+          </div>
+        )}
       </div>
-    )}
-  </div>
-  );  }
+    );
+  }
 
   return (
     <div>
-      <button className="sxs:hidden xs:hidden md:visible lg:visible" onClick={() => setIsOpen(true)}>ورود|ثبت نام</button>
-      <button className="sxs:ml-8 p-[4px] border border-red-500 rounded-lg xs:flex ml-[15px] items-center md:hidden lg:hidden" onClick={() => setIsOpen(true)}><ImageWrapper src="logout.svg"/></button>
+      <button
+        className="sxs:hidden xs:hidden md:block mx-[60px] border-2 border-green-600 rounded-lg py-[5px] px-[10px] my-[5px] text-green-600"
+        onClick={() => setIsOpen(true)}
+      >
+        ورود|ثبت نام
+      </button>
+      <button
+        className="sxs:ml-8 p-[4px] border border-red-500 rounded-lg xs:flex ml-[15px] mt-[5px] items-center md:hidden lg:hidden"
+        onClick={() => setIsOpen(true)}
+      >
+        <ImageWrapper src="logout.svg" />
+      </button>
       {step === 1 && (
         <ModalContainer setIsOpen={setIsOpen} isOpen={isOpen}>
           <SendOTPForm

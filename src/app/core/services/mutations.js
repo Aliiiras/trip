@@ -35,6 +35,18 @@ const useUpdateBankAccount = () => {
   return useMutation({ mutationFn, onSuccess });
 };
 
+const useUpdatePersonalInfo = () => {
+  const queryClient = useQueryClient();
+
+  const mutationFn = (data) => api.put("user/profile", data);
+
+  const onSuccess = () => {
+    queryClient.invalidateQueries({ queryKey: ["user-data"] });
+  };
+
+  return useMutation({ mutationFn, onSuccess });
+};
+
 const useAddToBasket = () => {
   const mutationFn = (id) => api.put(`basket/${id}`);
   
@@ -58,6 +70,7 @@ export {
   useSendOtp,
   useCheckOtp,
   useUpdateBankAccount,
+  useUpdatePersonalInfo,
   useAddToBasket,
   useCheckout,
 };

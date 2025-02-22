@@ -3,23 +3,19 @@
 import { useAddToBasket } from "../core/services/mutations";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+/////
+import { useGetUserData } from "../core/services/queries";
 
 function ReserveButton({ id }) {
-  console.log("rec" , id);
   const { mutate, isPending } = useAddToBasket();
-  // console.log(id);
+
   const router = useRouter();
 
+  const { isPendingUser, data } = useGetUserData();
+
   const cartHandler = () => {
-    // console.log(id);
-    // if (!id) {
-      // نمایش پیام یا هدایت به صفحه لاگین
-      // toast.error("لطفاً ابتدا وارد حساب کاربری خود شوید.");
-      // console.log("login!!!!!!");
-      // router.push("/"); // هدایت به صفحه لاگین
-      // return;
-    // }
-    if (isPending) return;
+  
+    if (isPending && isPendingUser) return;
 
     mutate(id, {
       onSuccess: (data) => {
@@ -28,6 +24,8 @@ function ReserveButton({ id }) {
       },
       onError: (error) => {
         console.log(error);
+        toast.error("لطفاً ابتدا وارد حساب کاربری خود شوید.");
+        router.push("/"); 
       },
     });
   };
@@ -36,8 +34,7 @@ function ReserveButton({ id }) {
     <div>
       <button
         onClick={cartHandler}
-        className="bg-green-500 w-32 rounded-lg text-white m-10 p-2 font-semibold"
-      >
+        className="bg-green-500 w-32 rounded-lg text-white m-10 p-2 font-semibold">
         رزرو و خرید
       </button>
     </div>

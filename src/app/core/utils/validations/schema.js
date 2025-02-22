@@ -9,4 +9,17 @@ const bankAcountSchema = object({
     .required(),
 });
 
-export { bankAcountSchema };
+const personalInfoSchema = object({
+  firstName: string().min(2).required("نام را وارد کنید"),
+  lastName: string().min(2).required("نام خانوادگی را وارد کنید"),
+  nationalCode: string()
+    .length(10, "کد ملی باید ۱۰ رقم باشد")
+    .required("کد ملی الزامی است"),
+  phoneNumber: string()
+    .matches(/^09[0-9]{9}$/, "شماره موبایل نامعتبر است")
+    .required("شماره موبایل الزامی است"),
+    email: string().email("ایمیل معتبر وارد کنید").required("ایمیل الزامی است")
+
+});
+
+export { bankAcountSchema , personalInfoSchema};
