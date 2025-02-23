@@ -63,15 +63,14 @@ function CheckOutPage() {
       <Header />
       {/* main div */}
       <div
-        className="w-[60%] mx-auto
-      xs: w-full xs:flex xs:flex-col
-      md:flex-row 
-      md: gap-[6px] my-[60px]">
+        className="mx-auto flex
+      xs:flex-col xs:w-[80%] xs:my-[20px]
+      md:flex-row md:gap-[6px] md:my-[60px]">
         {/* passenger info div */}
         <div
           className="border border-gray-200 rounded-lg
-        xs:min-w-[85%]
-        md:min-w-[80%]">
+        xs:min-w-[85%] xs:mb-[10px]
+        md:min-w-[70%] md:mb-0">
           <h2
             className="xs: leading-[38px] font-normal
          lg: flex pr-4 py-8 text-[24px] 
@@ -114,16 +113,15 @@ function CheckOutPage() {
               <option value="" disabled>
                 جنسیت
               </option>
-              <option value="male">مرد</option>
-              <option value="female">زن</option>
+              <option className="text-gray-900" value="male">مرد</option>
+              <option className="text-gray-900" value="female">زن</option>
             </select>
           </form>
         </div>
         {/* trip info div */}
         <div
-          className="xs:min-w-[85%] xs:flex xs:flex-col xs:items-center xs:justify-center md:min-w-[33%]
-      md:flex md:flex-col md:gap-8 border border-gray-200 rounded-lg
-      md:mr-0 md:ml-0 md:pb-[20px]
+          className="xs:min-w-[85%] xs:flex xs:flex-col 
+          md:min-w-[30%] md:flex md:flex-col md:gap-8 border border-gray-200 rounded-lg md:pb-[20px]
       ">
           <div
             className="

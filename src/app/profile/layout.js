@@ -13,9 +13,9 @@ export default function ProfileLayout({ children }) {
       <Header />
       <div className="grid grid-cols-3 gap-6 xs:flex flex-col md:flex md:flex-row md:mt-[20px] md:mr-[40px]">
         {/* border border-slate-200 divide-y rounded-md col-span-1 */}
-        <div className="md:h-[25vh] md:border md:rounded-lg">
+        <div className="md:h-[148px] md:border md:rounded-lg">
           <ul
-            className=" flex flex-row items-center xs:w-full h-[40px] sxs:hidden 
+            className=" flex flex-row items-center xs:w-full sxs:hidden 
         md:block md:w-[20vw]"
           >
             <Link
@@ -59,9 +59,7 @@ export default function ProfileLayout({ children }) {
             </Link>
           </ul>
         </div>
-        <main
-        //  className="bg-white col-span-3 border-gray-200 rounded-lg border min-h-80"
-        >
+        <main>
           {children}
         </main>
       </div>
